@@ -118,20 +118,21 @@ Expected Response:
 [
     {
         "id": 1,
-        "name": "John Doe",
-        "email": "nomankhan96801@gmail.com"
+        "name": "Owesh Khan",
+        "email": "oweshkhan96@gmail.com"
     },
     {
         "id": 2,
-        "name": "Alice Smith",
-        "email": "Temp@gmail.com"
+        "name": "Sophia Williams",
+        "email": "sophia.williams42@gmail.com"
     },
     {
         "id": 3,
-        "name": "Bob Johnson",
-        "email": "develup.edu@gmail.com"
+        "name": "James Anderson",
+        "email": "james.anderson88@gmail.com"
     }
 ]
+
 ```
 
 3. Backup Database (GET /api/backup)
@@ -164,15 +165,20 @@ Expected Response:
 }
 ```
 5. Initiate Twitter Authentication (GET /auth/twitter)
+```
 Method: GET
 URL: http://127.0.0.1:8000/auth/twitter
+```
 Note:
 This endpoint will issue a 302 Redirect to Twitter.
 Since OAuth flows require a browser, it is best to test this endpoint by visiting it in your browser.
 Postman Tip: In Postman, if you follow the redirect manually (check the "Location" header), you can simulate part of the flow. However, completing the OAuth flow is easier in a browser.
+
 6. Handle Twitter Callback (GET /auth/twitter/callback)
+```
 Method: GET
 URL: http://127.0.0.1:8000/auth/twitter/callback
+```
 Note:
 This endpoint is automatically called by Twitter after authentication.
 It fetches user details, saves/updates the user in the database, and then redirects the user (e.g., to your mobile app URI or a success page).
