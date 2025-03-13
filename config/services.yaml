@@ -1,0 +1,31 @@
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+
+    # Ensure Doctrine repositories are registered
+    App\Repository\:
+        resource: '../src/Repository'
+        tags: ['doctrine.repository_service']
+
+    # Register TwitterOAuthService with required arguments
+    App\Service\TwitterOAuthService:
+        arguments:
+            $requestStack: '@request_stack'
+            $router: '@router'
+
+    # Register Controllers explicitly
+    App\Controller\TwitterAuthController:
+        public: true
+
+    App\Controller\UserUploadController:
+        public: true
+
+    App\Controller\ApiUserController:
+        public: true
+
+    App\Controller\BackupController:
+        public: true
+
+    App\Controller\RestoreController:
+        public: true
