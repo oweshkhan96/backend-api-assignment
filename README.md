@@ -62,3 +62,41 @@ cd backend
 ```
 composer install
 ```
+3. Set Up Environment Variables
+Update your .env file with your database, mailer, and Twitter credentials:
+```
+DATABASE_URL="mysql://username:password@127.0.0.1:3306/db_name"
+MAILER_DSN=smtp://Yourname@Yourdomain.com:Yourpassword@smtp.mailgun.org:587
+TWITTER_CLIENT_ID=your_twitter_client_id
+TWITTER_CLIENT_SECRET=your_twitter_client_secret
+TWITTER_CALLBACK_URL=http://127.0.0.1:8000/auth/twitter/callback
+```
+
+Replace username, password, db_name, and Twitter keys with your actual credentials.
+
+4. Run Database Migrations
+
+```php bin/console doctrine:migrations:migrate```
+
+5. Start the Symfony Server
+
+```symfony server:start```
+
+Or start the PHP built-in server:
+
+```php -S 127.0.0.1:8000 -t public```
+
+Email Sending with Mailgun
+This project uses Mailgun via Symfony Mailer for sending email notifications.
+Ensure your Mailgun domain is verified and update the MAILER_DSN in your .env file with your Mailgun credentials.
+For reference, watch the video: Mailgun Setup Video
+Testing with Postman
+1. Upload and Store Data (POST /api/upload)
+```Method: POST
+URL: http://127.0.0.1:8000/api/upload
+```
+Body:
+Select form-data
+Add a key named file (or as defined by your controller)
+Set its type to File and choose your data.csv file.
+Expected Response
